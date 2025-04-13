@@ -1,5 +1,5 @@
-import {ReactNode} from "react";
-import {NavLinkProps} from "react-router-dom";
+import { ReactNode } from 'react';
+import { NavLinkProps } from 'react-router-dom';
 
 interface ICustomLinkProps extends NavLinkProps {
     children?: ReactNode;

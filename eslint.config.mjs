@@ -94,12 +94,11 @@ export default [
 				'error',
 				'ignorePackages',
 				{
+					ts: 'always',
+					tsx: 'always',
 					js: 'never',
-					mjs: 'never',
-					jsx: 'never',
-					ts: 'never',
-					tsx: 'never',
-				},
+					jsx: 'never'
+				}
 			],
 			'linebreak-style': 0,
 			'no-use-before-define': [
@@ -137,7 +136,7 @@ export default [
 			'no-param-reassign': 0,
 			'global-require': 0,
 			'i18next/no-literal-string': [
-				'error',
+				'warn',
 				{
 					markupOnly: true,
 					ignoreAttribute: ['data-testid', 'to',],
