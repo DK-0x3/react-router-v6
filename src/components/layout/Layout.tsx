@@ -17,7 +17,10 @@ const Layout = () => {
 			</main>
 
 			<footer className="footer">
-				<h4>2025</h4>
+				<h4>©DK-0x3
+					<br/>
+					2025
+				</h4>
 			</footer>
 		</>
 	);

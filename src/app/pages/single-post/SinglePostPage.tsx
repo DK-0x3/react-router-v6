@@ -1,15 +1,19 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import {Link, useLocation, useNavigate, useParams} from 'react-router-dom';
 import { IRouteParams } from '../../routers/RouteParams.ts';
 import { IPost } from '../../../entities/models/post/IPost.ts';
 import { useEffect, useState } from 'react';
 import ROUTES from '../../routers/Routes.ts';
+import { ResolveRoutePath } from '../../../features/helpers/ResolveRoutePath.ts';
 
-const SinglePage = () => {
+const SinglePostPage = () => {
 	const { PostId } = useParams<IRouteParams>();
 	const navigate = useNavigate();
 	const [post, setPost] = useState<IPost | null>(null);
 	const [loading, setLoading] = useState<boolean>(true);
-	const [error, setError] = useState<string | null>(null);
+	const { pathname } = useLocation();
+
+	const goBack = () => navigate(-1);
+
 
 	useEffect(() => {
 		const fetchPost = async () => {
@@ -24,7 +28,6 @@ const SinglePage = () => {
 				const data = await response.json();
 				setPost(data);
 			} catch (err) {
-				setError('Post not found');
 				navigate(ROUTES.NOT_FOUND);
 			} finally {
 				setLoading(false);
@@ -37,19 +40,22 @@ const SinglePage = () => {
 	}, [PostId, navigate]);
 
 	if (loading) {
-		return <div>Loading...</div>;
-	}
-
-	if (error) {
-		return <div>{error}</div>;
+		return (
+			<>
+				<button onClick={goBack}>Go Back</button>
+				<div>Loading...</div>
+			</>
+		);
 	}
 
 	return (
 		<div>
+			<button onClick={goBack}>Go Back</button>
 			<h1>{post?.title}</h1>
 			<p>{post?.body}</p>
+			{post && <Link to={ResolveRoutePath(ROUTES.POSTS.EDIT_POST(post.id), pathname)}>Edit Post</Link>}
 		</div>
 	);
 };
 
-export default SinglePage;
+export default SinglePostPage;

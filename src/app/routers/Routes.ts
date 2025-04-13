@@ -5,9 +5,16 @@ const ROUTES = {
 	ABOUT: 'about',
 	POSTS: {
 		ROOT: 'posts',
-		TEMPLATE: `posts/:${ROUTE_PARAMS.PostId}`,
+		TEMPLATE: {
+			ROOT: `posts/:${ROUTE_PARAMS.PostId}`,
+			EDIT: `posts/:${ROUTE_PARAMS.PostId}/edit`
+		},
+		CREATE: 'posts/create',
+
 		SINGLE_POST: (postId: string) => `/posts/${postId}`,
+		EDIT_POST: (postId: string) => `/posts/${postId}/edit`,
 	},
+	LOGIN: 'login',
 	NOT_FOUND: '*',
 };
 

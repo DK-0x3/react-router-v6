@@ -34,7 +34,7 @@ export default [
 			...pluginReact.configs.flat.recommended.rules,
 			...pluginImport.configs.errors.rules,
 			...pluginImport.configs.warnings.rules,
-			'quotes': ['error', 'single',],
+			'quotes': ['error', 'single-post',],
 			'no-undef': 'off',
 			'@typescript-eslint/explicit-function-return-type': 'off',
 			'no-underscore-dangle': 'off',
