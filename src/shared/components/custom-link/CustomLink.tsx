@@ -10,7 +10,10 @@ const CustomLink: FC<ICustomLinkProps> = (props: ICustomLinkProps) => {
 		...rest
 	} = props;
 
-	const match = useMatch(to);
+	const match = useMatch({
+		path: to,
+		end: to.length === 1,
+	});
 
 	return (
 		<NavLink to={to} {...rest} className={match ? 'nav-link-active' : ''}>

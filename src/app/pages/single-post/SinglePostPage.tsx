@@ -1,4 +1,4 @@
-import {Link, useLocation, useNavigate, useParams} from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { IRouteParams } from '../../routers/RouteParams.ts';
 import { IPost } from '../../../entities/models/post/IPost.ts';
 import { useEffect, useState } from 'react';

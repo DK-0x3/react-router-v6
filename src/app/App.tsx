@@ -4,17 +4,18 @@ import HomePage from './pages/home/HomePage.tsx';
 import BlogPage from './pages/blog/BlogPage.tsx';
 import AboutPage from './pages/about/AboutPage.tsx';
 import NotFoundPage from './pages/not-found/NotfoundPage.tsx';
-import { Layout } from '../components/layout/Layout.tsx';
+import { Layout } from '../shared/components/layout/Layout.tsx';
 import SinglePostPage from './pages/single-post/SinglePostPage.tsx';
 import ROUTES from './routers/Routes.ts';
 import CreatePostPage from './pages/create-post/CreatePostPage.tsx';
-import EditPostPage from "./pages/edit-post/EditPostPage.tsx";
-import LoginPage from "./pages/login/LoginPage.tsx";
-import PrivateAuth from "../features/hoc/PrivateAuth.tsx";
+import EditPostPage from './pages/edit-post/EditPostPage.tsx';
+import LoginPage from './pages/login/LoginPage.tsx';
+import PrivateAuth from '../features/hoc/PrivateAuth.tsx';
+import { AuthProvider } from '../features/hoc/AuthProvider.tsx';
 
 const App = () => {
 	return (
-		<>
+		<AuthProvider>
 			<Routes>
 				<Route path={ROUTES.HOME} element={<Layout/>}>
 					<Route index element={<HomePage/>}/>
@@ -27,7 +28,7 @@ const App = () => {
 					<Route path={ROUTES.NOT_FOUND} element={<NotFoundPage/>}/>
 				</Route>
 			</Routes>
-		</>
+		</AuthProvider>
 	);
 };
 
